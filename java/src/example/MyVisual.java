@@ -1,8 +1,5 @@
 package example;
 
-import C22398106.Eadaoinsvisual;
-import C22337521.FionansVisual;
-import C22339066.Alannahsvisual;
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
@@ -112,9 +109,13 @@ public class MyVisual extends Visual {
         if (key >= '0' && key <= '9') {
 			mode = key - '0';
 		}
-		if (key == ' ') {
-            getAudioPlayer().cue(0);
-            getAudioPlayer().play();
+		if (keyCode == ' ') {
+            if (ap.isPlaying()) {
+                ap.pause();
+            } else {
+                ap.rewind();
+                ap.play();
+            }
         }
     }
 
@@ -342,6 +343,14 @@ public class MyVisual extends Visual {
                 }
                 break;
                 
+            }
+            //Fionán's visual
+            case 7:
+            {
+                play = new tricar(this);
+                play.render();
+                    
+                break;
             }
         }
 
