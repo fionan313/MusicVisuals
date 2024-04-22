@@ -8,7 +8,9 @@ import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
+import processing.core.PShape;
 import ie.tudublin.*;
+
 
 public class MyVisual extends Visual {
     WaveForm wf;
@@ -22,6 +24,7 @@ public class MyVisual extends Visual {
     float[] lerpedBuffer;
     float average = 0;
     int mode = 0;
+    PShape car;
 
     public void settings() {
         //size(1024, 500);
@@ -49,6 +52,7 @@ public class MyVisual extends Visual {
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
         lerpedBuffer = new float[width];
+        car = loadShape("sportscar.obj");
     }
 
     public void keyPressed() {

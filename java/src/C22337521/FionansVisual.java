@@ -31,7 +31,7 @@ public class FionansVisual extends Visual {
         size(640, 360, P3D);
         // Call loadAudio to load an audio file to process
         loadAudio("Bicep - Glue (Original Mix)_q5rliCxX8xc.mp3");
-        //car = loadShape("sportscar.obj");
+        car = loadShape("sportscar.obj");
     }
 
     public void draw() {
