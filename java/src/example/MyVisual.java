@@ -171,6 +171,68 @@ public class MyVisual extends Visual {
             {
                 break;
             }
+
+            //Both Éadaoin's
+            case 5:
+            {
+                colorMode(HSB);
+                background(200);
+                stroke(255);
+                translate(width/2, height/2);
+                for(int i = 0; i < 2000;i+=60)
+                {
+                    float hue = map(i, 0, ab.size() + (ab.size() / 4), 50, 250);
+                    float radius = 100+i;
+                    //rotate entire shape
+                    rotate(PApplet.radians(frameCount));
+                    //map of bluish pinkish colours
+                    
+                    beginShape();
+                    for(float a = 0; a < PApplet.TWO_PI; a+=PApplet.TWO_PI/8)
+                    {
+                        float x = radius * PApplet.cos(a);
+                        float y =  radius * PApplet.sin(a);
+                        //changes stroke weight on beat
+                        noFill();
+                        stroke(hue, 255, 255);
+                        vertex(x * smooth, y * smooth);
+                    }
+                    endShape();
+                }
+                break;
+            }
+            case 6:
+            {
+                colorMode(HSB);
+                background(200);
+                translate(width/2, height/2);
+                for(int i = 0; i < 2000;i+=65)
+                {
+                    float hue = map(i, 0, ab.size(), 0, 256);
+                    float radius = 100+i;
+                    //rotate entire shape
+                    rotate(PApplet.radians(frameCount));
+                    
+                    beginShape();
+                    for(float a = 0; a < PApplet.TWO_PI; a+=PApplet.TWO_PI/8)
+                    {
+                        float x = radius * PApplet.cos(a);
+                        float y =  radius * PApplet.sin(a);
+                        //changes stroke weight on beat
+                        noFill();
+                        stroke(hue, 150, 200);
+			            vertex(x * smooth, y * smooth);
+                        for (int j = 0; j < height; j += 25) {
+                            float hue1 = map(i, 0, ab.size() , 0, 256);
+                            fill(hue1, 255, 255);
+                            stroke(15);
+                            circle((i*2)/3, (j*2)/3, ((width/2) * smooth) / 2 );
+                        }
+                    }
+                    endShape();
+                }
+                break;
+            }
         }
     }
 }
