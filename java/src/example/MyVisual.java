@@ -11,6 +11,9 @@ import processing.core.PApplet;
 import processing.core.PShape;
 import ie.tudublin.*;
 
+import ddf.minim.analysis.*;
+import processing.core.PVector;
+
 
 public class MyVisual extends Visual {
     WaveForm wf;
@@ -27,6 +30,16 @@ public class MyVisual extends Visual {
     float average = 0;
     int mode = 0;
     PShape car;
+
+
+    // variables used in alannahs code
+    float smoothedAmplitude = 4;
+
+    //eye related code
+    PVector[] eyePositions;
+    int[] eyeSizes;
+    
+
 
     public void settings() {
         //size(1024, 500);
@@ -150,7 +163,7 @@ public class MyVisual extends Visual {
                 textSize(30); // Adjust text size
                 text("Press 1 for Éadaoin's Circle Maze", width / 2, height / 2 - 50);
                 text("Press 2 for ", width / 2, height / 2);
-                text("Press 3 for", width / 2, height / 2 + 50);
+                text("Press 3 for Alannahs eye visual", width / 2, height / 2 + 50);
                 text("Press 4 for ", width / 2, height / 2 + 100);
                 text("Press 5 for Éadaoin's Kaleidoscope", width / 2, height / 2 + 100);
                 text("Press 6 for Éadaoin's Circular Kaleidoscope", width / 2, height / 2 + 150);
@@ -289,6 +302,31 @@ public class MyVisual extends Visual {
             //Alannah's visual
             case 3:
             {
+
+                eyePositions = new PVector[]{
+                    new PVector(width * 0.25f, height * 0.5f), 
+                    new PVector(width * 0.75f, height * 0.5f), 
+                    new PVector(width * 0.1f, height * 0.2f),  
+                    new PVector(width * 0.9f, height * 0.2f),  
+                    new PVector(width * 0.5f, height * 0.1f),  
+                    new PVector(width * 0.1f, height * 0.8f),  
+                    new PVector(width * 0.9f, height * 0.8f),  
+                    new PVector(width * 0.5f, height * 0.9f)   
+                };
+        
+                eyeSizes = new int[]{
+                    300, 
+                    300, 
+                    200, 
+                    200, 
+                    200, 
+                    200, 
+                    200, 
+                    200  
+                };
+
+                displayBackgroundEffect();
+                drawEyes();
                 break;   
             }
 
@@ -359,6 +397,62 @@ public class MyVisual extends Visual {
                 }
                 break;
             }
+        }
+
+        
+    }
+
+    //functions for alannahs visuals
+
+    private void displayBackgroundEffect() {
+        float amp = 1 + smoothedAmplitude * 2; 
+        float waveHeight = sin(frameCount / 10.0f) * amp * 50; 
+        
+        float centerX = width / 2; // Center of the screen
+        float centerY = height / 2; // Center of the screen
+    
+        float numPoints = ab.size();
+        float thetaInc = TWO_PI / numPoints;
+
+        // Set the hue for blue 
+        int blue = 210; 
+        
+
+        stroke(blue); // Always blue
+        
+        noFill();
+    
+        beginShape();
+        for (int i = 0; i < numPoints; i++) {
+            float px = centerX + cos(thetaInc * i) * waveHeight; // X coordinate relative to the center
+            float py = centerY + sin(thetaInc * i) * waveHeight; // Y coordinate relative to the center
+            vertex(px, py);
+        }
+        endShape(CLOSE); 
+    }
+    
+    
+
+
+    private void drawEyes() {
+        for (int i = 0; i < eyePositions.length; i++) {
+            PVector eye = eyePositions[i];
+
+            PVector mouseVector = new PVector(mouseX, mouseY);
+
+            // Calculate pupil positions
+            PVector copyOfEye = eye.copy();
+            PVector pupilDifference = mouseVector.copy().sub(eye).setMag(40);
+
+            PVector pupil = copyOfEye.add(pupilDifference);
+
+            // Draw eyes
+            fill(255);
+            ellipse(eye.x, eye.y, eyeSizes[i], eyeSizes[i]); 
+
+            // Draw pupils
+            fill(0);
+            ellipse(pupil.x, pupil.y, eyeSizes[i] / 5, eyeSizes[i] / 5); // Proportionally larger pupil
         }
     }
 }
