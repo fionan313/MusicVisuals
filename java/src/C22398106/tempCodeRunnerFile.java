@@ -27,5 +27,6 @@ AudioBuffer ab;
         }
         // Call this is you want to use frequency bands
         calculateFrequencyBands();
+    
 
      
