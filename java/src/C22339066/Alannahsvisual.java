@@ -25,7 +25,7 @@ public class Alannahsvisual extends Visual {
     double specHi = 0.20;   // 20%
 
     Cube[] cubes;
-    Wall[] walls;
+    
 
     public void settings() {
         size(1024, 500);
@@ -57,12 +57,6 @@ public class Alannahsvisual extends Visual {
             cubes[i] = new Cube();
         }
 
-        // Create wall objects
-        int nbWalls = 500;
-        walls = new Wall[nbWalls];
-        for (int i = 0; i < nbWalls; i++) {
-            walls[i] = new Wall();
-        }
         
         // Start the song
         song.play(0);
@@ -89,10 +83,6 @@ public class Alannahsvisual extends Visual {
                 // Display cubes
                 for (int i = 0; i < nbCubes; i++) {
                     cubes[i].display((float) specLow, (float) specMid, (float) specHi, smoothedAmplitude, 0);
-                }
-                // Display walls
-                for (int i = 0; i < walls.length; i++) {
-                    walls[i].display((float) specLow, (float) specMid, (float) specHi, smoothedAmplitude, 0);
                 }
                 break;
             }
@@ -143,32 +133,17 @@ public class Alannahsvisual extends Visual {
         }
     }
     
-    class Wall {
-        float x, y, z, sizeX, sizeY; // Position and dimensions
-    
-        Wall() {
-            // Empty constructor
-        }
-        
-        Wall(float x, float y, float z, float sizeX, float sizeY) {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-            this.sizeX = sizeX;
-            this.sizeY = sizeY;
-        }
+   
         
         void display(float scoreLow, float scoreMid, float scoreHi, float intensity, float scoreGlobal) {
             pushMatrix(); // Save current transformation matrix
-            translate(x, y, z); // Move to the position of the wall
+
             
             fill(255); // Set fill color to white
             
-            // Draw the wall
-            rect(0, 0, sizeX, sizeY); // Draw a rectangle at the wall's position
-            popMatrix(); 
+            
         }
-    }
+    
     public static void main(String[] args) {
         PApplet.main("ie.tudublin.MyVisual");
     }
