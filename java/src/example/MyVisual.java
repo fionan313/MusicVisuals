@@ -164,19 +164,7 @@ public class MyVisual extends Visual {
             case 1:
             {
                 play = new circles(this);
-                play.render();  // Call render method to draw the circles
-                //play = new circles(this);
-                /*colorMode(HSB);
-                background(200);
-                stroke(0); 
-                for (int i = 0; i < width + 25; i += 25) {
-                    for (int j = 0; j < height + 25; j += 25) {
-                    float hue = map(i, 0, ab.size() , 0, 256);
-                    fill(hue, 255, 255);
-                    stroke(15);
-                    circle(i, j, (width /2) * smooth);
-                    }
-                }*/
+                play.render();
                 break;
             }
 
@@ -283,7 +271,7 @@ public class MyVisual extends Visual {
                 //     image(cam, 0, 0, width, height); 
                 // }
                     
-                    break;
+                break;
             }
 
             //Alannah's visual
