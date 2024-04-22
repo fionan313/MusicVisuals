@@ -67,7 +67,7 @@ public class tricar extends poly {
             mv.translate(mv.width/2, bounceY, -200); // Apply the bounce 
             mv.rotateZ(PApplet.PI);
             mv.rotateY(mv.ry);
-            mv.scale(225.5f);
+            mv.scale(250.5f);
             mv.shape(mv.car); 
 
             mv.ry += 0.02;
