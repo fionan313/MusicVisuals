@@ -26,17 +26,6 @@ public class MyVisual extends Visual {
     float smooth = 0;
 
 
-    float[] lerpedBuffer;
-    float average = 0;
-    int mode = 0;
-    
-    PShape car;
-    PShape homer;
-    //float y = 0;
-    float smoothedY = 0;
-    float ry;
-
-
     // variables used in alannahs code
     FFT fft;
     float smoothedAmplitude = 4;
@@ -59,6 +48,21 @@ public class MyVisual extends Visual {
     //eye related code
     PVector[] eyePositions;
     int[] eyeSizes;
+
+    // FIONAN
+    int mode = 0;
+
+    float[] lerpedBuffer;
+
+    float[] lerpedBuffer131;
+    float y131 = 0;
+    float smoothedY = 0;
+    float smoothedAmplitude131 = 0;
+
+    PShape car;
+    PShape homer;
+
+    float ry;
     
 
 
@@ -89,13 +93,10 @@ public class MyVisual extends Visual {
         abv = new AudioBandsVisual(this);
         lerpedBuffer = new float[width];
 
+        y131 = height / 2;
+        smoothedY = y131;
 
-        y = height / 2;
-        smoothedY = y;
-
-        lerpedBuffer = new float[width];
-
-        
+        lerpedBuffer131 = new float[width];
 
         car = loadShape("sportsCar.obj");
         homer = loadShape("homer.obj");
@@ -131,6 +132,7 @@ public class MyVisual extends Visual {
             sum += abs(ab.get(i));
             lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
         }
+        float average = 0;
         average= sum / (float) ab.size();
         smooth = lerp(smooth, average, 0.1f);
         background(0);
@@ -150,7 +152,22 @@ public class MyVisual extends Visual {
         abv.render();
 
         float halfH = height / 2;
+        float average131 = 0;
+        float sum131 = 0;
         off += 1;
+
+        for(int i = 0 ; i < ab.size() ; i ++)
+        {
+            sum131 += abs(ab.get(i));
+            lerpedBuffer131[i] = lerp(lerpedBuffer131[i], ab.get(i), 0.05f);
+        }
+
+        average131= sum131 / (float) ab.size();
+
+        smoothedAmplitude131 = lerp(smoothedAmplitude131, average131, 0.1f);
+        
+        float cx = width / 2;
+        float cy = height / 2;
 
         float tot = 0;
         for(int i = 0 ; i < ab.size() ; i ++)

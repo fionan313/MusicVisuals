@@ -26,8 +26,8 @@ public class trimatrix extends poly {
                 mv.translate(x, y);
 
                 // Rotation reacts to music
-                mv.rotateY(PApplet.map(mv.smoothedAmplitude, 0, 1, 0, PApplet.PI)); 
-                mv.rotateX(PApplet.map(mv.smoothedAmplitude, 0, 1, 0, PApplet.PI));
+                mv.rotateY(PApplet.map(mv.smoothedAmplitude131, 0, 1, 0, PApplet.PI)); 
+                mv.rotateX(PApplet.map(mv.smoothedAmplitude131, 0, 1, 0, PApplet.PI));
                 
                 // Size reacts to music
                 mv.box(90 + mv.lerpedAvg * 50); 
