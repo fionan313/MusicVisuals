@@ -59,7 +59,7 @@ public class tricar extends poly {
             float bounceFactor = 5.0f; 
             float gravity = 0.2f;     
 
-            bounceVelocity += mv.smoothedAmplitude * bounceFactor;
+            bounceVelocity += mv.smoothedAmplitude131 * bounceFactor;
             bounceVelocity -= gravity;
 
             float bounceY = mv.height/2 + 100 + bounceVelocity * 50; 
