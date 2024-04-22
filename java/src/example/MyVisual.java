@@ -131,10 +131,28 @@ public class MyVisual extends Visual {
         {
             case 0:
             {
-                //Add Starter Screen Here
-                //Like say press 1 for ""
-                //Press 2 for ""
-                break;
+                colorMode(HSB); 
+                background(0);  
+                textAlign(CENTER, CENTER); 
+                textSize(40);
+                fill(255); 
+                
+                // Display a welcome message 
+                text("Welcome to OOP 2024 assignment!", width / 2, height / 4);
+                
+                // Display mode selection 
+                textSize(30); // Adjust text size
+                text("Press 1 for ", width / 2, height / 2 - 50);
+                text("Press 2 for ", width / 2, height / 2);
+                text("Press 3 for", width / 2, height / 2 + 50);
+                text("Press 4 for ", width / 2, height / 2 + 100);
+                text("Press 5 for ", width / 2, height / 2 + 100);
+                text("Press 6 for ", width / 2, height / 2 + 150);
+
+                
+                text("Press 'SPACE' to restart the current audio", width / 2, height - 100);
+
+    break;
             }
 
             //Éadaoin's visual
