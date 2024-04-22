@@ -98,8 +98,8 @@ public class MyVisual extends Visual {
 
         lerpedBuffer131 = new float[width];
 
-        car = loadShape("/Users/fionanoceallaigh/Downloads/MusicVisuals/java/data/sportsCar.obj");
-        homer = loadShape("homer.obj");
+        car = loadShape("java/data/sportsCar.obj");
+        homer = loadShape("java/data/homer.obj");
     }
 
     float off = 0;
