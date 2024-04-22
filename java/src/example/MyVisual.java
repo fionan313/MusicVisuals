@@ -178,7 +178,107 @@ public class MyVisual extends Visual {
             //Fionán's visual
             case 2:
             {
-                break;
+                float[] lerpedBuffer;
+                float y = 0;
+                float smoothedY = 0;
+                float smoothedAmplitude = 0;
+
+                y = height / 2;
+                smoothedY = y;
+        
+                lerpedBuffer = new float[width];
+
+                float off = 0;
+
+                float lerpedAvg = 0;
+
+                float halfH = height / 2;
+                float average = 0;
+                float sum1 = 0;
+                off += 1;
+                // Calculate sum and average of the samples
+                // Also lerp each element of buffer;
+                for(int i = 0 ; i < ab.size() ; i ++)
+                {
+                    sum1 += abs(ab.get(i));
+                    lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
+                }
+                average= sum1 / (float) ab.size();
+        
+                smoothedAmplitude = lerp(smoothedAmplitude, average, 0.1f);
+                
+                float cx = width / 2;
+                float cy = height / 2;
+        
+                
+                float tot = 0;
+                for(int i = 0 ; i < ab.size() ; i ++)
+                {
+                    tot += abs(ab.get(i));
+                }
+        
+                float avg = tot / ab.size();
+        
+                lerpedAvg = lerp(lerpedAvg, avg, 0.1f);
+
+                background(0);
+                lights();
+                // float xx = 0, yy= 0, z= 0, centerX= 0, centerY= 0, centerZ = 0, upX= 0, upY= 0, upZ = 0;
+                // camera(xx, yy, z, centerX, centerY, centerZ, upX, upY, upZ);
+
+                //camera(500, 500, 500, 0, 0, 0, 0, 1, 0);
+
+                background(lerpedAvg * 255); // Background colour react to audio
+
+                for (int x = 0; x <= width; x += 60) {
+                    for (int y1 = 0; y1 <= height; y1 += 60) {
+                    pushMatrix();
+                    translate(x, y1);
+
+                    // Rotation reacts to music
+                    rotateY(map(smoothedAmplitude, 0, 1, 0, PI)); 
+                    rotateX(map(smoothedAmplitude, 0, 1, 0, PI));
+                    
+                    // Size reacts to music
+                    box(90 + lerpedAvg * 50); 
+                    popMatrix();
+                    }
+                }
+            
+                // Map colour based on lerpedAvg
+                float hue = map(lerpedAvg, 0, 1, 0, 255);
+                stroke(hue, 255, 255);
+                fill(hue, 255, 255);
+
+                translate(0, 0, 200); // Move forward in Z before drawing other shapes - (to avoid the triangle to disappear behind the matrix)
+                // ellipse(width/2, height/2, 100, 100);
+
+                // Audio-reactive triangle
+                float triangleSize = lerpedAvg * height/2 * 5;
+                float angle = radians(frameCount) + lerpedAvg * TWO_PI; // Rotation with music
+                            
+                float x1 = width/2 + cos(angle) * triangleSize;
+                float y1 = height/2 + sin(angle) * triangleSize;
+                float x2 = width/2 + cos(angle + TWO_PI / 3) * triangleSize;
+                float y2 = height/2 + sin(angle + TWO_PI / 3) * triangleSize;
+                float x3 = width/2 + cos(angle + 2 * TWO_PI / 3) * triangleSize;
+                float y3 = height/2 + sin(angle + 2 * TWO_PI / 3) * triangleSize;
+
+                // Colour changes based on lerpedAvg
+                float hue1 = frameCount % 255; 
+                stroke(hue1, 255, 255);
+                fill(hue1, 255, 255);
+
+                triangle(x1, y1, x2, y2, x3, y3);
+
+                // // Draw webcam with opacity
+                // if (cam.available()) {
+                //     cam.read();
+                //     tint(255, 128);  // 50% opacity
+                //     image(cam, 0, 0, width, height); 
+                // }
+                    
+                    break;
             }
 
             //Alannah's visual
