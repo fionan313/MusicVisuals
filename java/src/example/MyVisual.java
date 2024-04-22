@@ -35,7 +35,7 @@ public class MyVisual extends Visual {
     
     PShape car;
     PShape homer;
-    float y = 0;
+    //float y = 0;
     float smoothedY = 0;
     float ry;
 
