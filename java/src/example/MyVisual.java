@@ -164,9 +164,9 @@ public class MyVisual extends Visual {
                 text("Press 1 for Éadaoin's Circle Maze", width / 2, height / 2 - 50);
                 text("Press 2 for ", width / 2, height / 2);
                 text("Press 3 for Alannahs eye visual", width / 2, height / 2 + 50);
-                text("Press 4 for ", width / 2, height / 2 + 100);
-                text("Press 5 for Éadaoin's Kaleidoscope", width / 2, height / 2 + 100);
-                text("Press 6 for Éadaoin's Circular Kaleidoscope", width / 2, height / 2 + 150);
+                text("Press 4 for Alannahs cube visual", width / 2, height / 2 + 100);
+                text("Press 5 for Éadaoin's Kaleidoscope", width / 2, height / 2 + 150);
+                text("Press 6 for Éadaoin's Circular Kaleidoscope", width / 2, height / 2 + 200);
 
                 
                 text("Press 'SPACE' to restart the current audio", width / 2, height - 100);
