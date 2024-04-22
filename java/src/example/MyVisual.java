@@ -11,6 +11,7 @@ import processing.core.PApplet;
 import processing.core.PShape;
 import ie.tudublin.*;
 
+//import ddf.minim.*;
 import ddf.minim.analysis.*;
 import processing.core.PVector;
 
@@ -33,7 +34,23 @@ public class MyVisual extends Visual {
 
 
     // variables used in alannahs code
+    FFT fft;
     float smoothedAmplitude = 4;
+    //cube related code
+    int nbCubes;
+    double specLow = 0.03; // 3%
+    double specMid = 0.125; // 12.5%
+    double specHi = 0.20;   // 20%
+    Cube[] cubes;
+
+    //line related code
+    int x = width;
+    int y = height;
+    int x0 = 10; int y0 = 10;
+    int lineSegments = 200; 
+    float[] lineOffsetsLeft;
+    float[] lineOffsetsRight;
+    
 
     //eye related code
     PVector[] eyePositions;
@@ -330,9 +347,49 @@ public class MyVisual extends Visual {
                 break;   
             }
 
-            //Group's visual
+            //Alannah's visual
             case 4:
             {
+                fft = new FFT(ab.size(), 44100);
+
+                // Display across the whole screen
+                nbCubes = (int) (fft.specSize() * specHi); // Make sure this calculation is correct
+
+                cubes = new Cube[nbCubes]; // Ensure it's not null
+                
+                // Cube initialization
+                for (int i = 0; i < nbCubes; i++) {
+                    cubes[i] = new Cube(); // Properly initialize each cube
+                }
+                
+                fft.forward(ab);
+
+                // Initialize arrays for line displacements
+                lineOffsetsLeft = new float[lineSegments];
+                lineOffsetsRight= new float[lineSegments];
+
+                
+
+                // Update line offsets based on FFT data
+                updateLineOffsets();
+
+                stroke(255);
+                noFill();
+
+                // Draw diagonal lines with wave-like movements
+                drawLine(lineOffsetsLeft, 0, 0, width, height);  // Top-left to bottom-right
+                drawLine(lineOffsetsRight, width, 0, 0, height);  // Top-right to bottom-left
+
+                
+
+                //smoothedAmplitude=smoothedAmplitude*0.9f+fft.mix.level*0.1f;
+                // Display cubes
+                stroke(0);
+                for (int i = 0; i < nbCubes; i++) {
+                    cubes[i].display((float) specLow, (float) specMid, (float) specHi, smoothedAmplitude, 0);
+                }
+                        
+
                 break;
             }
 
@@ -453,6 +510,131 @@ public class MyVisual extends Visual {
             // Draw pupils
             fill(0);
             ellipse(pupil.x, pupil.y, eyeSizes[i] / 5, eyeSizes[i] / 5); // Proportionally larger pupil
+        }
+    }
+
+
+
+    //functions for Alannahs cubes and lines, case 4
+    private void updateLineOffsets() {
+        for (int i = 0; i < lineSegments; i++) {
+            int fftIndex = PApplet.floor(map(i, 0, lineSegments - 1, 0, fft.specSize()));
+            float displacement = map(fft.getBand(fftIndex), 0, 10, -100, 100);
+
+            lineOffsetsLeft[i] = displacement;  // For the diagonal line from top-left to bottom-right
+            lineOffsetsRight[i] = displacement; // For the diagonal line from top-right to bottom-left
+        }
+    }
+
+    private void drawLine(float[] offsets, float startX, float startY, float endX, float endY) {
+        beginShape();
+        for (int i = 0; i < lineSegments; i++) {
+            float t = map(i, 0, lineSegments - 1, 0, 1);
+            float x = lerp(startX, endX, t);
+            float y = lerp(startY, endY, t) + offsets[i];  // Apply the calculated offset
+
+            vertex(x, y);
+        }
+        endShape();
+    }
+
+
+
+    class Cube {
+        float x, y, z; // Position
+        float rotX, rotY, rotZ; // Rotation
+        float sumRotX, sumRotY, sumRotZ; // Cumulative rotation
+        float size; // Size of the cube
+        float speed; // Speed of the cube
+        float angle;
+    
+        Cube() {
+            x = random(width);
+            y = random(height);
+            z = random(-10000, 1000);
+            rotX = random(TWO_PI);
+            rotY = random(TWO_PI);
+            rotZ = random(TWO_PI);
+            size = random(50, 200);
+            speed = 1.0f; // Set default speed
+        }
+    
+        void display(float scoreLow, float scoreMid, float scoreHi, float intensity, float scoreGlobal) {
+            pushMatrix(); // Save current transformation matrix
+            translate(x, y, z); // Move to the position of the cube
+            rotateX(rotX); // Apply rotation around x-axis
+            rotateY(rotY); // Apply rotation around y-axis
+            rotateZ(rotZ); // Apply rotation around z-axis
+            // Draw the cube
+            fill(0, 255, 0);
+            box(size); // Draw a cube with the given size
+            popMatrix();
+    
+            // Update cube position
+            updateSpeed();
+            z += speed; // Move the cube forward
+
+
+            
+            float amp = 1 + smoothedAmplitude * 5;
+            float waveHeight = sin(angle) * amp * size * -3;
+            
+            float numPoints = ab.size();
+            float thetaInc = TWO_PI / numPoints;
+        
+            beginShape();
+            for (int i = 0; i < numPoints; i++) {
+                float px = x + cos(thetaInc * i) * waveHeight; // X coordinate with diagonal offset
+                float py = y + sin(thetaInc * i) * waveHeight; // Y coordinate with diagonal offset
+                vertex(px, py);
+            }
+            endShape(CLOSE); // Close the shape to connect the last point with the first
+        
+
+        }
+        void updateSpeed() {
+            float minAmplitude = 0.0f; 
+            float maxAmplitude = 1.0f;
+            float minSpeed = 0.5f; 
+            float maxSpeed = 5.0f;
+        
+            speed = map(smoothedAmplitude, minAmplitude, maxAmplitude, minSpeed, maxSpeed);
+        
+            if (z > 1000) {
+                // Reset position within visible range
+                z = random(-10000, -1000); 
+                x = random(width);
+                y = random(height);
+                rotX = random(TWO_PI);
+                rotY = random(TWO_PI);
+                rotZ = random(TWO_PI);
+                size = random(50, 200); 
+            }
+        
+        
+        }
+    }
+
+    class VisualEffect {
+        float x, y; // Position
+        float size; // Size
+        float speed; // Speed of reaction to music
+        float hue; // Color
+        float angle; // Angle for animation
+
+        VisualEffect(float x, float y, float size, float speed, float hue) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.speed = speed;
+            this.hue = hue;
+            angle = random(TWO_PI); // Random starting angle
+        }
+
+        void update() {
+            // Update properties based on music
+            float offset = map(smoothedAmplitude, 0, 1, -TWO_PI, TWO_PI);
+            angle += speed + offset;
         }
     }
 }
