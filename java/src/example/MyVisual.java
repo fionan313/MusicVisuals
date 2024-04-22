@@ -20,6 +20,8 @@ public class MyVisual extends Visual {
     AudioInput ai;
     AudioBuffer ab;
 
+    poly play;
+
     float smooth = 0;
     float[] lerpedBuffer;
     float average = 0;
@@ -161,7 +163,10 @@ public class MyVisual extends Visual {
             //Éadaoin's visual
             case 1:
             {
-                colorMode(HSB);
+                play = new circles(this);
+                play.render();  // Call render method to draw the circles
+                //play = new circles(this);
+                /*colorMode(HSB);
                 background(200);
                 stroke(0); 
                 for (int i = 0; i < width + 25; i += 25) {
@@ -171,7 +176,7 @@ public class MyVisual extends Visual {
                     stroke(15);
                     circle(i, j, (width /2) * smooth);
                     }
-                }
+                }*/
                 break;
             }
 
