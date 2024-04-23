@@ -182,9 +182,10 @@ public class MyVisual extends Visual {
         switch(mode)
         {
             case 0:
-            {
-                colorMode(HSB); 
-                background(0);  
+            { 
+                float hue = frameCount % 360;
+                colorMode(HSB);
+                background(hue, 255, 255);
                 textAlign(CENTER, CENTER); 
                 textSize(40);
                 fill(255); 
@@ -200,10 +201,9 @@ public class MyVisual extends Visual {
                 text("Press 4 for Alannahs cube visual", width / 2, height / 2 + 100);
                 text("Press 5 for Éadaoin's Kaleidoscope", width / 2, height / 2 + 150);
                 text("Press 6 for Éadaoin's Circular Kaleidoscope", width / 2, height / 2 + 200);
-                text("Press 2 for Fionán's 3D sports car and reactive triangles", width / 2, height / 2 + 250);
-
-                
+                text("Press 7 for Fionán's 3D sports car and reactive triangles", width / 2, height / 2 + 250);
                 text("Press 'SPACE' to pause the current audio", width / 2, height - 100);
+
                 break;
             }
 
@@ -211,7 +211,7 @@ public class MyVisual extends Visual {
             case 1:
             {
                 play = new circles(this);
-                play.render();  // Call render method to draw the circles
+                play.render();
                 break;
             }
 
@@ -275,8 +275,6 @@ public class MyVisual extends Visual {
                 lineOffsetsLeft = new float[lineSegments];
                 lineOffsetsRight= new float[lineSegments];
 
-                
-
                 // Update line offsets based on FFT data
                 updateLineOffsets();
 
@@ -287,15 +285,12 @@ public class MyVisual extends Visual {
                 drawLine(lineOffsetsLeft, 0, 0, width, height);  // Top-left to bottom-right
                 drawLine(lineOffsetsRight, width, 0, 0, height);  // Top-right to bottom-left
 
-                
-
                 //smoothedAmplitude=smoothedAmplitude*0.9f+fft.mix.level*0.1f;
                 // Display cubes
                 stroke(0);
                 for (int i = 0; i < nbCubes; i++) {
                     cubes[i].display((float) specLow, (float) specMid, (float) specHi, smoothedAmplitude, 0);
                 }
-                        
 
                 break;
             }
@@ -303,62 +298,14 @@ public class MyVisual extends Visual {
             //Both Éadaoin's
             case 5:
             {
-                colorMode(HSB);
-                background(200);
-                stroke(255);
-                translate(width/2, height/2);
-                for(int i = 0; i < 2000;i+=60)
-                {
-                    float hue = map(i, 0, ab.size() + (ab.size() / 4), 50, 250);
-                    float radius = 100+i;
-                    //rotate entire shape
-                    rotate(PApplet.radians(frameCount));
-                    //map of bluish pinkish colours
-                    
-                    beginShape();
-                    for(float a = 0; a < PApplet.TWO_PI; a+=PApplet.TWO_PI/8)
-                    {
-                        float x = radius * PApplet.cos(a);
-                        float y =  radius * PApplet.sin(a);
-                        //changes stroke weight on beat
-                        noFill();
-                        stroke(hue, 255, 255);
-                        vertex(x * smooth, y * smooth);
-                    }
-                    endShape();
-                }
+                play = new kaly(this);
+                play.render();   
                 break;
             }
             case 6:
             {
-                colorMode(HSB);
-                background(200);
-                translate(width/2, height/2);
-                for(int i = 0; i < 2000;i+=65)
-                {
-                    float hue = map(i, 0, ab.size(), 0, 256);
-                    float radius = 100+i;
-                    //rotate entire shape
-                    rotate(PApplet.radians(frameCount));
-                    
-                    beginShape();
-                    for(float a = 0; a < PApplet.TWO_PI; a+=PApplet.TWO_PI/8)
-                    {
-                        float x = radius * PApplet.cos(a);
-                        float y =  radius * PApplet.sin(a);
-                        //changes stroke weight on beat
-                        noFill();
-                        stroke(hue, 150, 200);
-			            vertex(x * smooth, y * smooth);
-                        for (int j = 0; j < height; j += 25) {
-                            float hue1 = map(i, 0, ab.size() , 0, 256);
-                            fill(hue1, 255, 255);
-                            stroke(15);
-                            circle((i*2)/3, (j*2)/3, ((width/2) * smooth) / 2 );
-                        }
-                    }
-                    endShape();
-                }
+                play = new circlekaly(this);
+                play.render();   
                 break;
                 
             }
@@ -367,12 +314,9 @@ public class MyVisual extends Visual {
             {
                 play = new tricar(this);
                 play.render();
-                    
                 break;
             }
         }
-
-        
     }
 
     //functions for alannahs visuals

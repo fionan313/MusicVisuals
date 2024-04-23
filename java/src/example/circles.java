@@ -1,13 +1,7 @@
 package example;
 
-import ddf.minim.AudioBuffer;
-import ddf.minim.AudioInput;
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
 import processing.core.PApplet;
-import processing.core.PShape;
-import ie.tudublin.*;
-import processing.core.*;
+
 
 public class circles extends poly
 {
