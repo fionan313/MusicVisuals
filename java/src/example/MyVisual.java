@@ -194,7 +194,7 @@ public class MyVisual extends Visual {
                 text("Press 5 for Éadaoin's Kaleidoscope", width / 2, height / 2 + 150);
                 text("Press 6 for Éadaoin's Circular Kaleidoscope", width / 2, height / 2 + 200);
                 text("Press 7 for Fionán's 3D sports car and reactive triangles", width / 2, height / 2 + 250);
-                text("Press 'SPACE' to pause the current audio", width / 2, height - 100);
+                text("Press 'SPACE' to pause the current audio", width / 2, height -50);
 
                 break;
             }
