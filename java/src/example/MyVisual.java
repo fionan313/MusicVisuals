@@ -7,11 +7,8 @@ import ddf.minim.Minim;
 import processing.core.PApplet;
 import processing.core.PShape;
 import ie.tudublin.*;
-
-//import ddf.minim.*;
 import ddf.minim.analysis.*;
 import processing.core.PVector;
-
 
 public class MyVisual extends Visual {
     WaveForm wf;
@@ -24,7 +21,6 @@ public class MyVisual extends Visual {
     poly play;
 
     float smooth = 0;
-
 
     // variables used in alannahs code
     FFT fft;
@@ -43,7 +39,6 @@ public class MyVisual extends Visual {
     int lineSegments = 200; 
     float[] lineOffsetsLeft;
     float[] lineOffsetsRight;
-    
 
     //eye related code
     PVector[] eyePositions;
@@ -63,8 +58,6 @@ public class MyVisual extends Visual {
     PShape homer;
 
     float ry;
-    
-
 
     public void settings() {
         //size(1024, 500);
@@ -103,7 +96,6 @@ public class MyVisual extends Visual {
     }
 
     float off = 0;
-
     float lerpedAvg = 0;
 
     public void keyPressed() {
@@ -220,14 +212,12 @@ public class MyVisual extends Visual {
             {
                 play = new trimatrix(this);
                 play.render();
-                    
                 break;
             }
 
             //Alannah's visual
             case 3:
             {
-
                 eyePositions = new PVector[]{
                     new PVector(width * 0.25f, height * 0.5f), 
                     new PVector(width * 0.75f, height * 0.5f), 
@@ -298,13 +288,13 @@ public class MyVisual extends Visual {
             //Both Éadaoin's
             case 5:
             {
-                play = new kaly(this);
+                play = new vertex(this);
                 play.render();   
                 break;
             }
             case 6:
             {
-                play = new circlekaly(this);
+                play = new circlevertex(this);
                 play.render();   
                 break;
                 
@@ -333,7 +323,6 @@ public class MyVisual extends Visual {
 
         // Set the hue for blue 
         int blue = 210; 
-        
 
         stroke(blue); // Always blue
         
@@ -347,9 +336,6 @@ public class MyVisual extends Visual {
         }
         endShape(CLOSE); 
     }
-    
-    
-
 
     private void drawEyes() {
         for (int i = 0; i < eyePositions.length; i++) {
@@ -373,8 +359,6 @@ public class MyVisual extends Visual {
         }
     }
 
-
-
     //functions for Alannahs cubes and lines, case 4
     private void updateLineOffsets() {
         for (int i = 0; i < lineSegments; i++) {
@@ -397,8 +381,6 @@ public class MyVisual extends Visual {
         }
         endShape();
     }
-
-
 
     class Cube {
         float x, y, z; // Position
@@ -434,8 +416,6 @@ public class MyVisual extends Visual {
             updateSpeed();
             z += speed; // Move the cube forward
 
-
-            
             float amp = 1 + smoothedAmplitude * 5;
             float waveHeight = sin(angle) * amp * size * -3;
             
@@ -449,9 +429,8 @@ public class MyVisual extends Visual {
                 vertex(px, py);
             }
             endShape(CLOSE); // Close the shape to connect the last point with the first
-        
-
         }
+
         void updateSpeed() {
             float minAmplitude = 0.0f; 
             float maxAmplitude = 1.0f;
@@ -470,8 +449,6 @@ public class MyVisual extends Visual {
                 rotZ = random(TWO_PI);
                 size = random(50, 200); 
             }
-        
-        
         }
     }
 

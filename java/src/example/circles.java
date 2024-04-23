@@ -12,6 +12,7 @@ public class circles extends poly
 
     @Override
     public void render(){
+        mv.strokeWeight(1);
         mv.colorMode(PApplet.HSB);
         mv.background(150);
         mv.stroke(255);
@@ -21,7 +22,7 @@ public class circles extends poly
                 float hue = PApplet.map(i, 0, mv.ab.size(), 0, 256); // Call map on mv (assuming it's a PApplet subclass)
                 mv.fill(hue, 255, 255);
                 mv.stroke(15);
-                mv.circle(i, j, (mv.width /2) * mv.smooth);
+                mv.circle(i, j, (mv.width / 2) * mv.smooth);
             }
         }
     }

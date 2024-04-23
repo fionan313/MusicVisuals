@@ -1,5 +1,4 @@
 package example;
-import ie.tudublin.*;
 
 public abstract class poly {
     MyVisual mv;
