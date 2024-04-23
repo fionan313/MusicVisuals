@@ -247,7 +247,10 @@ public class MyVisual extends Visual {
 
             case 4:
             {
+                
                 fft = new FFT(ab.size(), 44100);
+                stroke(255);
+                noFill();
 
                 // Display across the whole screen
                 nbCubes = (int) (fft.specSize() * specHi); // Make sure this calculation is correct
@@ -256,7 +259,7 @@ public class MyVisual extends Visual {
                 
                 // Cube initialization
                 for (int i = 0; i < nbCubes; i++) {
-                    cubes[i] = new Cube(); // Properly initialize each cube
+                    cubes[i] = new Cube(); // Properly initialize Aeach cube
                 }
                 
                 fft.forward(ab);
@@ -268,8 +271,7 @@ public class MyVisual extends Visual {
                 // Update line offsets based on FFT data
                 updateLineOffsets();
 
-                stroke(255);
-                noFill();
+                
 
                 // Draw diagonal lines with wave-like movements
                 drawLine(lineOffsetsLeft, 0, 0, width, height);  // Top-left to bottom-right
@@ -277,7 +279,7 @@ public class MyVisual extends Visual {
 
                 //smoothedAmplitude=smoothedAmplitude*0.9f+fft.mix.level*0.1f;
                 // Display cubes
-                stroke(0);
+        
                 for (int i = 0; i < nbCubes; i++) {
                     cubes[i].display((float) specLow, (float) specMid, (float) specHi, smoothedAmplitude, 0);
                 }
