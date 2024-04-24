@@ -9,7 +9,7 @@ import processing.core.PShape;
 import ie.tudublin.*;
 import ddf.minim.analysis.*;
 import processing.core.PVector;
-import ddf.minim.*;
+
 
 public class MyVisual extends Visual {
     WaveForm wf;
@@ -277,7 +277,8 @@ public class MyVisual extends Visual {
                     200  
                 };
 
-                displayBackgroundEffect();
+                
+                //displayBackgroundEffect();
                 drawEyes();
                 break;   
             }
@@ -350,32 +351,6 @@ public class MyVisual extends Visual {
 
     //functions for alannahs visuals
 
-    private void displayBackgroundEffect() {
-        float amp = 1 + smoothedAmplitude * 2; 
-        float waveHeight = sin(frameCount / 10.0f) * amp * 50; 
-        
-        float centerX = width / 2; // Center of the screen
-        float centerY = height / 2; // Center of the screen
-    
-        float numPoints = ab.size();
-        float thetaInc = TWO_PI / numPoints;
-
-        // Set the hue for blue 
-        int blue = 210; 
-
-        stroke(blue); // Always blue
-        
-        noFill();
-    
-        beginShape();
-        for (int i = 0; i < numPoints; i++) {
-            float px = centerX + cos(thetaInc * i) * waveHeight; // X coordinate relative to the center
-            float py = centerY + sin(thetaInc * i) * waveHeight; // Y coordinate relative to the center
-            vertex(px, py);
-        }
-        endShape(CLOSE); 
-    }
-
     private void drawEyes() {
         for (int i = 0; i < eyePositions.length; i++) {
             PVector eye = eyePositions[i];
@@ -439,7 +414,7 @@ public class MyVisual extends Visual {
             size = random(50, 200);
             speed = .5f; // Set default speed
         }
-    
+        
         void display(float scoreLow, float scoreMid, float scoreHi, float intensity, float scoreGlobal) {
             pushMatrix(); // Save current transformation matrix
             translate(x, y, z); // Move to the position of the cube
@@ -492,29 +467,6 @@ public class MyVisual extends Visual {
                 rotZ = random(TWO_PI);
                 size = random(50, 200); 
             }
-        }
-    }
-
-    class VisualEffect {
-        float x, y; // Position
-        float size; // Size
-        float speed; // Speed of reaction to music
-        float hue; // Color
-        float angle; // Angle for animation
-
-        VisualEffect(float x, float y, float size, float speed, float hue) {
-            this.x = x;
-            this.y = y;
-            this.size = size;
-            this.speed = speed;
-            this.hue = hue;
-            angle = random(TWO_PI); // Random starting angle
-        }
-
-        void update() {
-            // Update properties based on music
-            float offset = map(smoothedAmplitude, 0, 1, -TWO_PI, TWO_PI);
-            angle += speed + offset;
         }
     }
 }
