@@ -13,12 +13,6 @@ public class trimatrix extends poly {
 
         mv.background(0); //set background to black
         mv.lights(); //enable processing lighting for 3D shapes
-        
-        // TEST CODE FOR CAMERA ANGLES
-        //float xx = 0, yy= 0, z= 0, centerX= 0, centerY= 0, centerZ = 0, upX= 0, upY= 0, upZ = 0;
-        //camera(xx, yy, z, centerX, centerY, centerZ, upX, upY, upZ);
-
-        //mv.camera(500, 500, 500, 0, 0, 0, 0, 1, 0);
 
         mv.background(mv.lerpedAvg * 255); //background colour react to audio
 
@@ -36,11 +30,6 @@ public class trimatrix extends poly {
             mv.popMatrix();
             }
         }
-    
-        //map colour based on mv.lerpedAvg
-        float hue = PApplet.map(mv.lerpedAvg, 0, 1, 0, 255);
-        mv.stroke(hue, 255, 255); //set outline colour
-        mv.fill(hue, 255, 255); //set fill colour
 
         mv.translate(0, 0, 200); //move forward in Z before drawing other shapes - (to avoid the triangle to disappear behind the matrix)
 
