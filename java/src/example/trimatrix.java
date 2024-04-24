@@ -13,6 +13,8 @@ public class trimatrix extends poly {
 
             mv.background(0); //set background to black
             mv.lights(); //enable processing lighting for 3D shapes
+            
+            // TEST CODE FOR CAMERA ANGLES
             //float xx = 0, yy= 0, z= 0, centerX= 0, centerY= 0, centerZ = 0, upX= 0, upY= 0, upZ = 0;
             //camera(xx, yy, z, centerX, centerY, centerZ, upX, upY, upZ);
 

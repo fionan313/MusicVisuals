@@ -143,7 +143,6 @@ public class MyVisual extends Visual {
         wf.render();
         abv.render();
 
-        float halfH = height / 2;
         float average131 = 0;
         float sum131 = 0;
         off += 1;
@@ -157,9 +156,6 @@ public class MyVisual extends Visual {
         average131= sum131 / (float) ab.size();
 
         smoothedAmplitude131 = lerp(smoothedAmplitude131, average131, 0.1f);
-        
-        float cx = width / 2;
-        float cy = height / 2;
 
         float tot = 0;
         for(int i = 0 ; i < ab.size() ; i ++)
