@@ -59,6 +59,12 @@ public class MyVisual extends Visual {
 
     float ry;
 
+    //defining camera positions
+    float camW_X = 500, camW_Y = 500, camW_Z = 500;
+    float camA_X = -200, camA_Y = 500, camA_Z = 500;
+    float camS_X = 500, camS_Y = -200, camS_Z = 500;
+    float camD_X = 800, camD_Y = 500, camD_Z = 500;
+
     public void settings() {
         //size(1024, 500);
 
@@ -113,6 +119,24 @@ public class MyVisual extends Visual {
     }
 
     public void draw() {
+
+        //function for swithcing camera angles
+        if (key == 'w') {
+            camera(camW_X, camW_Y, camW_Z, 0, 0, 0, 0, 1, 0);
+        } else if (key == 'a') {
+            camera(camA_X, camA_Y, camA_Z, 0, 0, 0, 0, 1, 0);
+        } else if (key == 's') {
+            camera(camS_X, camS_Y, camS_Z, 0, 0, 0, 0, 1, 0);
+        } else if (key == 'd') {
+            camera(camD_X, camD_Y, camD_Z, 0, 0, 0, 0, 1, 0);
+        }
+        //q to reset to default
+        else if (key == 'q') {
+            camera();
+        } else {
+            camera();
+        }
+
         if (ab.size() <= 0) {
             System.out.println("Audio buffer is empty or not loaded properly.");
             return; // Exit if audio buffer is empty
