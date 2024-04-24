@@ -9,6 +9,7 @@ import processing.core.PShape;
 import ie.tudublin.*;
 import ddf.minim.analysis.*;
 import processing.core.PVector;
+import ddf.minim.*;
 
 public class MyVisual extends Visual {
     WaveForm wf;
@@ -36,10 +37,10 @@ public class MyVisual extends Visual {
     int x = width;
     int y = height;
     int x0 = 10; int y0 = 10;
-    int lineSegments = 200; 
+    int lineSegments = 150; 
     float[] lineOffsetsLeft;
     float[] lineOffsetsRight;
-
+    
     //eye related code
     PVector[] eyePositions;
     int[] eyeSizes;
@@ -87,6 +88,7 @@ public class MyVisual extends Visual {
         loadAudio("Bicep - Glue (Original Mix)_q5rliCxX8xc.mp3");
         // Call this instead to read audio from the microphone
         //startListening();
+        
 
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
@@ -290,27 +292,12 @@ public class MyVisual extends Visual {
                 // Display across the whole screen
                 nbCubes = (int) (fft.specSize() * specHi); // Make sure this calculation is correct
 
-                cubes = new Cube[nbCubes]; // Ensure it's not null
+                cubes = new Cube[nbCubes]; //  not null
                 
                 // Cube initialization
                 for (int i = 0; i < nbCubes; i++) {
                     cubes[i] = new Cube(); // Properly initialize Aeach cube
                 }
-                
-                fft.forward(ab);
-
-                // Initialize arrays for line displacements
-                lineOffsetsLeft = new float[lineSegments];
-                lineOffsetsRight= new float[lineSegments];
-
-                // Update line offsets based on FFT data
-                updateLineOffsets();
-
-                
-
-                // Draw diagonal lines with wave-like movements
-                drawLine(lineOffsetsLeft, 0, 0, width, height);  // Top-left to bottom-right
-                drawLine(lineOffsetsRight, width, 0, 0, height);  // Top-right to bottom-left
 
                 //smoothedAmplitude=smoothedAmplitude*0.9f+fft.mix.level*0.1f;
                 // Display cubes
@@ -318,6 +305,21 @@ public class MyVisual extends Visual {
                 for (int i = 0; i < nbCubes; i++) {
                     cubes[i].display((float) specLow, (float) specMid, (float) specHi, smoothedAmplitude, 0);
                 }
+                
+                // Initialize arrays for line displacements
+                lineOffsetsLeft = new float[lineSegments];
+                lineOffsetsRight= new float[lineSegments];
+
+                fft.forward(ab);
+
+                // Update line offsets based on FFT data
+                updateLineOffsets();
+
+
+                // Draw diagonal lines with wave-like movements
+                drawLine(lineOffsetsLeft, 0, 0, width, height);  // Top-left to bottom-right
+                drawLine(lineOffsetsRight, width, 0, 0, height);  // Top-right to bottom-left
+
 
                 break;
             }
@@ -422,7 +424,7 @@ public class MyVisual extends Visual {
     class Cube {
         float x, y, z; // Position
         float rotX, rotY, rotZ; // Rotation
-        float sumRotX, sumRotY, sumRotZ; // Cumulative rotation
+        float sumRotX, sumRotY, sumRotZ; // rotation
         float size; // Size of the cube
         float speed; // Speed of the cube
         float angle;
@@ -435,7 +437,7 @@ public class MyVisual extends Visual {
             rotY = random(TWO_PI);
             rotZ = random(TWO_PI);
             size = random(50, 200);
-            speed = 1.0f; // Set default speed
+            speed = .5f; // Set default speed
         }
     
         void display(float scoreLow, float scoreMid, float scoreHi, float intensity, float scoreGlobal) {
@@ -448,10 +450,14 @@ public class MyVisual extends Visual {
             fill(0, 255, 0);
             box(size); // Draw a cube with the given size
             popMatrix();
+
+            
+
+            z += speed; // Move the cube forward
     
             // Update cube position
             updateSpeed();
-            z += speed; // Move the cube forward
+            
 
             float amp = 1 + smoothedAmplitude * 5;
             float waveHeight = sin(angle) * amp * size * -3;
@@ -471,8 +477,8 @@ public class MyVisual extends Visual {
         void updateSpeed() {
             float minAmplitude = 0.0f; 
             float maxAmplitude = 1.0f;
-            float minSpeed = 0.5f; 
-            float maxSpeed = 5.0f;
+            float minSpeed = 0.1f; 
+            float maxSpeed = 1.8f;
         
             speed = map(smoothedAmplitude, minAmplitude, maxAmplitude, minSpeed, maxSpeed);
         
