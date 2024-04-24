@@ -288,7 +288,6 @@ public class MyVisual extends Visual {
                     200, 
                     200  
                 };
-
                 
                 displayBackgroundEffect();
                 drawEyes();
@@ -364,34 +363,38 @@ public class MyVisual extends Visual {
 
     //functions for alannahs visuals
     private void displayBackgroundEffect() {
-        float pulsatingScale = map(smoothedAmplitude, 0, 1, 0.5f, 0.8f); // Lower range for pulsating scale
-        
-        
-        float amp = 1 + smoothedAmplitude * 2 * pulsatingScale; // Reduced multiplier for amplitude
-        float waveHeight = sin(frameCount / 10.0f) * amp * 25; // Reduced wave height
-        
-        //coordinates for the circle
-        float centerX = width / 2; 
-        float centerY = height / 2; 
-        
-        //audio buffer to create the circular effect
-        float numPoints = ab.size();
-        float thetaInc = TWO_PI / numPoints;
-        
-        stroke(225);
-        
+        // Parameters for the circular shape
+        int numPoints = ab.size(); // Number of points in the circle based on audio buffer size
+        float centerX = width / 2; // Circle's center X-coordinate
+        float centerY = height / 2; // Circle's center Y-coordinate
+        float radius = 300; // Base radius of the circle
+        float thetaInc = TWO_PI / numPoints; // Angle increment for each point
+    
+        // Compute amplitude scaling
+        float pulsatingScale = map(smoothedAmplitude, 0, 1, 0.5f, 1.5f); // Scaling based on amplitude
+        float waveHeight = sin(frameCount / 10.0f) * pulsatingScale * 50; // Modulate height with a sine wave
+    
+        // Set up for drawing
         noFill(); 
-        
-        //// Begin drawing the circular shape
-        beginShape();
-        // Loop through each point to create the circle
+        stroke(255); // Circle outline color
+        strokeWeight(3);
+        beginShape(); // Start creating the circular shape
+    
+        // Loop through the audio buffer to create the circular shape
         for (int i = 0; i < numPoints; i++) {
-            float px = centerX + cos(thetaInc * i) * waveHeight * pulsatingScale; // Apply smaller scale to X
-            float py = centerY + sin(thetaInc * i) * waveHeight * pulsatingScale; // Apply smaller scale to Y
-            vertex(px, py);
+            float theta = thetaInc * i; // Current angle in radians
+            float offset = lerpedBuffer[i] * waveHeight; // Amplitude-based offset for the point
+    
+            // Calculate x and y based on polar coordinates and offset
+            float x = centerX + (cos(theta) * (radius + offset)); // X-coordinate with offset
+            float y = centerY + (sin(theta) * (radius + offset)); // Y-coordinate with offset
+    
+            vertex(x, y); // Add the calculated point to the shape
         }
-        endShape(CLOSE); 
+    
+        endShape(CLOSE); // Close the shape to create the circle
     }
+    
 
 
     private void drawEyes() {
