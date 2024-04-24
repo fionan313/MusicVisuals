@@ -120,6 +120,21 @@ public class MyVisual extends Visual {
 
     public void draw() {
 
+        //FROM PROCESSING WEBSITE FOR DEBUGGING
+
+        //camera(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ)	
+        
+        // Parameters
+        // eyeX	(float)	x-coordinate for the eye
+        // eyeY	(float)	y-coordinate for the eye
+        // eyeZ	(float)	z-coordinate for the eye
+        // centerX	(float)	x-coordinate for the center of the scene
+        // centerY	(float)	y-coordinate for the center of the scene
+        // centerZ	(float)	z-coordinate for the center of the scene
+        // upX	(float)	usually 0.0, 1.0, or ‑1.0
+        // upY	(float)	usually 0.0, 1.0, or ‑1.0
+        // upZ	(float)	usually 0.0, 1.0, or ‑1.0
+
         //function for swithcing camera angles
         if (key == 'w') {
             camera(camW_X, camW_Y, camW_Z, 0, 0, 0, 0, 1, 0);
