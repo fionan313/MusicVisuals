@@ -6,7 +6,6 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
-import ddf.minim.*;
 import ddf.minim.analysis.*;
 
 public class Alannahsvisual extends Visual {
