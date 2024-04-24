@@ -115,6 +115,20 @@ public class MyVisual extends Visual {
                 ap.play();
             }
         }
+        if (key == 'g'){
+            ap.close();
+            ap = minim.loadFile("Vengaboys - We like to Party! (The Vengabus).mp3", 1024);
+            ap.play();
+            ab = ap.mix;
+            loadAudio("Vengaboys - We like to Party! (The Vengabus).mp3");
+        }
+        if (key == 'h'){
+            ap.close();
+            ap = minim.loadFile("Bicep - Glue (Original Mix)_q5rliCxX8xc.mp3", 1024);
+            ap.play();
+            ab = ap.mix;
+            loadAudio("Bicep - Glue (Original Mix)_q5rliCxX8xc.mp3");
+        }
     }
 
     public void draw() {
