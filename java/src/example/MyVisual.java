@@ -283,7 +283,7 @@ public class MyVisual extends Visual {
 
             case 4:
             {
-                
+                //create a new fft instance
                 fft = new FFT(ab.size(), 44100);
                 stroke(255);
                 noFill();
@@ -309,6 +309,7 @@ public class MyVisual extends Visual {
                 lineOffsetsLeft = new float[lineSegments];
                 lineOffsetsRight= new float[lineSegments];
 
+                //process the audio buffer
                 fft.forward(ab);
 
                 // Update line offsets based on FFT data
@@ -373,8 +374,11 @@ public class MyVisual extends Visual {
 
     //functions for Alannahs cubes and lines, case 4
     private void updateLineOffsets() {
+        // Loop through each segment in the line
         for (int i = 0; i < lineSegments; i++) {
+            // Map the index 'i' to the FFT spectrum size to get a corresponding band
             int fftIndex = PApplet.floor(map(i, 0, lineSegments - 1, 0, fft.specSize()));
+            //// Get the FFT amplitude for the band and map it to a displacement range (-100 to 100)
             float displacement = map(fft.getBand(fftIndex), 0, 10, -100, 100);
 
             lineOffsetsLeft[i] = displacement;  // For the diagonal line from top-left to bottom-right
@@ -382,13 +386,19 @@ public class MyVisual extends Visual {
         }
     }
 
+    // Function to draw 
     private void drawLine(float[] offsets, float startX, float startY, float endX, float endY) {
         beginShape();
+
+        // Map 'i' to a normalized value between 0 and 1
+        //  calculate the x coordinate
+        //calculate the y coordinate
         for (int i = 0; i < lineSegments; i++) {
             float t = map(i, 0, lineSegments - 1, 0, 1);
             float x = lerp(startX, endX, t);
             float y = lerp(startY, endY, t) + offsets[i];  // Apply the calculated offset
 
+            //Add the calculated point to the shape being drawn
             vertex(x, y);
         }
         endShape();
@@ -416,22 +426,19 @@ public class MyVisual extends Visual {
         void display(float scoreLow, float scoreMid, float scoreHi, float intensity, float scoreGlobal) {
             pushMatrix(); // Save current transformation matrix
             translate(x, y, z); // Move to the position of the cube
-            rotateX(rotX); // Apply rotation around x-axis
-            rotateY(rotY); // Apply rotation around y-axis
-            rotateZ(rotZ); // Apply rotation around z-axis
+            rotateX(rotX); // Apply rotation around x axis
+            rotateY(rotY); // Apply rotation around y axis
+            rotateZ(rotZ); // Apply rotation around z axis
             // Draw the cube
             fill(0, 255, 0);
             box(size); // Draw a cube with the given size
             popMatrix();
-
-            
 
             z += speed; // Move the cube forward
     
             // Update cube position
             updateSpeed();
             
-
             float amp = 1 + smoothedAmplitude * 5;
             float waveHeight = sin(angle) * amp * size * -3;
             
@@ -452,7 +459,9 @@ public class MyVisual extends Visual {
             float maxAmplitude = 1.0f;
             float minSpeed = 0.1f; 
             float maxSpeed = 1.8f;
-        
+
+
+            // Map the smoothed amplitude to a corresponding speed value between minSpeed and maxSpeed
             speed = map(smoothedAmplitude, minAmplitude, maxAmplitude, minSpeed, maxSpeed);
         
             if (z > 1000) {
