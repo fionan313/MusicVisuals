@@ -56,8 +56,6 @@ public class MyVisual extends Visual {
     float smoothedAmplitude131 = 0;
 
     PShape car;
-    PShape homer;
-
     float ry;
 
     //defining camera positions
@@ -100,7 +98,6 @@ public class MyVisual extends Visual {
         lerpedBuffer131 = new float[width];
 
         car = loadShape("java/data/sportsCar.obj");
-        homer = loadShape("java/data/homer.obj");
     }
 
     float off = 0;
@@ -149,7 +146,8 @@ public class MyVisual extends Visual {
         }
         //q to reset to default
         else if (key == 'q') {
-            camera();
+
+            camera(100, 0, 0, 0, 0, 0, 0, 1, 0); 
         } else {
             camera();
         }
