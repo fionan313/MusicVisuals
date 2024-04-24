@@ -276,7 +276,7 @@ public class MyVisual extends Visual {
                 };
 
                 
-                //displayBackgroundEffect();
+                displayBackgroundEffect();
                 drawEyes();
                 break;   
             }
@@ -349,6 +349,36 @@ public class MyVisual extends Visual {
     }
 
     //functions for alannahs visuals
+    private void displayBackgroundEffect() {
+        float pulsatingScale = map(smoothedAmplitude, 0, 1, 0.5f, 0.8f); // Lower range for pulsating scale
+        
+        
+        float amp = 1 + smoothedAmplitude * 2 * pulsatingScale; // Reduced multiplier for amplitude
+        float waveHeight = sin(frameCount / 10.0f) * amp * 25; // Reduced wave height
+        
+        //coordinates for the circle
+        float centerX = width / 2; 
+        float centerY = height / 2; 
+        
+        //audio buffer to create the circular effect
+        float numPoints = ab.size();
+        float thetaInc = TWO_PI / numPoints;
+        
+        stroke(225);
+        
+        noFill(); 
+        
+        //// Begin drawing the circular shape
+        beginShape();
+        // Loop through each point to create the circle
+        for (int i = 0; i < numPoints; i++) {
+            float px = centerX + cos(thetaInc * i) * waveHeight * pulsatingScale; // Apply smaller scale to X
+            float py = centerY + sin(thetaInc * i) * waveHeight * pulsatingScale; // Apply smaller scale to Y
+            vertex(px, py);
+        }
+        endShape(CLOSE); 
+    }
+
 
     private void drawEyes() {
         for (int i = 0; i < eyePositions.length; i++) {
