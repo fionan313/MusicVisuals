@@ -1,12 +1,12 @@
 # Music Visualiser Project
 
-Name 1:eadaoin o Snodaigh
-Name 2:Fionan O Ceallaigh 
-Name 3:Alannah Walsh
+Name 1:Eadaoin o Snodaigh
+<br>Name 2:Fionan O Ceallaigh 
+<br>Name 3:Alannah Walsh
 
 Student Number 1: C22398106
-Student Number 2: C22337521
-Student Number 3: C22339066
+<br>Student Number 2: C22337521
+<br>Student Number 3: C22339066
 
 
 ## Instructions
@@ -23,6 +23,14 @@ For this assignment, we were tasked as a group to make a music visualizer using 
 # How it works
 
 # What I am most proud of in the assignment
+<b>Eadaoin</b>
+<p>i am most proud of ...</p>
+<br>
+<b>Fionan</b>
+<p>i am most proud of ...</p>
+<br>
+<b>Alannah</b>
+<p>The aspect I'm most proud of in my part of the assignment was my ability to adapt. I faced several instances where my code threw errors, and I wasn't sure why. These challenges were frustrating, but they became learning opportunities for me. Instead of giving up, I adapted. I researched, i watched videos and i ran my code again and again to try and improve it. One specific example comes to mind, before my finished product, in my case 4, i.e the cube case, i used to also have a wall class. the wall class was a long piece of code that i worked really hard on to get working, it reacted with the music and looked great along my cube class. But unfortunately, when putting it in the cases, the wall code stopped working, i tried for hours to try and fix it to no avail. i was frustrated and disappointed, 'why cant i get it' i thought. so i had to go back to the drawing board. i adapted and made the decision t remove the wall code and instead add two lines diagonally across the screen(as seen in the final program). Even though it was frustrating to remove the wall code, it was my ability to adapt and emply a new creative solution that i am really proud of, and will take forward with me. </p>
 
 # Markdown Tutorial
 
