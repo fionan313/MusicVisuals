@@ -1,8 +1,13 @@
 # Music Visualiser Project
 
-Name:
+Name 1:eadaoin o Snodaigh
+Name 2:Fionan O Ceallaigh 
+Name 3:Alannah Walsh
 
-Student Number: 
+Student Number 1: C22398106
+Student Number 2: C22337521
+Student Number 3: C22339066
+
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
