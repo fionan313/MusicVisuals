@@ -20,7 +20,7 @@ Student Number 1: C22398106
 For this assignment, we were tasked as a group to make a music visualizer using Processing in Java. Each of us was assigned a specific case to add our visuals to the program. Each member took on the task and made creative additions to the program. Using github we  there are 7 cases in total, 2 made by Alannah, 2 made by Fionán and 3 made by Éadaoin. across each of our cases we explored a various amount of functions. Fionán explored 3D models and matrixes, Alannah employed mouse input for one of her cases, and Éadaoin explored her creativity by combining two of her cases to making a unique 3rd case.
 
 # Instructions
-We used a keypressed and switch case to access the individual visuals. We were able to swap between visuals by pressing between 0-7. As well as this we included keys to change song, this was 'g' for We Like To Party and 'h' for Glue. We also used 'w','a','s' and 'd' t change the camera angles to view different dimensions of our visuals.
+We used a keypressed and switch case to access the individual visuals. We were able to swap between visuals by pressing between 0-7. As well as this we included keys to change song, this was 'g' for We Like To Party and 'h' for Glue. We also used 'w','a','s' and 'd' to change the camera angles to view different dimensions of our visuals.
 
 # How it works
 <b>Éadaoin</b>
@@ -31,7 +31,21 @@ We used a keypressed and switch case to access the individual visuals. We were a
 <p><b>circlevertex.java - </b>Like Hannah Montana's Song, The Best of Both Worlds, this code combines both my visuals to create an epic visual. The octagons are now created with a line of circles instead of just a line. The visual rotates and changes background colour with frame count. The code includes a for loop to create the octagons made of circles using the same maths functions as vertex.java. Each octagon(set of circles) has a different colour.The size of the circles, like the octagons, change based on the beat in the song, meaning there is a lot of movement in this visual.</p>
 <br>
 <b>Fionán</b>
-<p></p>
+<p><b>TriMatrix.java - </b
+This is the first of two visuals I created. It makes use of a 3D Matrix from earlier processing examples, however it shifts the cubes in the grid on the X and Y axis based on the music, additionally there is a traingle that reavts dynamically to the music.		<br>	       
+This visual conists of:
+- A matrix grid of cubes that shift in response to music.
+- The background color shifts in response to the music
+- A triangle rotates, changes size colour, synchronised with the music.</p>
+<br>
+<p>Tricar.java -
+This is the second viusal I created. It repurposes the traiangle from earlier, scales it down and dupliactes it to created a grid accross teh top and bottom of the screen, it also makes use of a .obj file to insert a sports car model that spins and bounces to the music.
+<br>	
+This visual conists of:
+- A dynamic grid of triangles that rotate and change color based on sound.
+- A 3D sports car model that bounces in rhythm with the music.
+</p>
+<p>Camera() function</p>
 <br>
 <b>Alannah</b>
 <p></p>
