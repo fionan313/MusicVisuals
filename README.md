@@ -31,6 +31,7 @@ We used a keypressed and switch case to access the individual visuals. We were a
 <p><b>circlevertex.java - </b>Like Hannah Montana's Song, The Best of Both Worlds, this code combines both my visuals to create an epic visual. The octagons are now created with a line of circles instead of just a line. The visual rotates and changes background colour with frame count. The code includes a for loop to create the octagons made of circles using the same maths functions as vertex.java. Each octagon(set of circles) has a different colour.The size of the circles, like the octagons, change based on the beat in the song, meaning there is a lot of movement in this visual.</p>
 <br>
 <b>Fionán</b>
+<br>
 <p><b>TriMatrix.java - </b>
 This is the first of two visuals I created. It makes use of a 3D Matrix from earlier processing examples, however it shifts the cubes in the grid on the X and Y axis based on the music, additionally there is a traingle that reavts dynamically to the music.		<br>	       
 This visual conists of:
@@ -54,76 +55,14 @@ This visual conists of:
 <p>I am most proud of being able to join both of my initial visuals into a 3rd visual with a mixture of my code, creating an even cooler visual. When I initially tried this it looked okay but not great, and with more editing and trial and erroring I was able to get my circle vertex to a place that I was really happy with and have it looking good. I think this visual was easier than my other 2 visuals, but only because I had already done the hard work and dealt with the difficulties involved with creating them. I had already learned a lot from my first 2 visuals as well so it was quicker when I was editing as I knew each of the variables and what they would change.</p>
 <br>
 <b>´Fionán</b>
-<p>i am most proud of ...</p>
+<p>I'm most pround of being able to significantly improve my skills with using Version Control System (VCS) throughout this assignemnet, along with improving my Java skills and getting a better understanding of creating sketches with Processing, putting my skills in Git to use was very rewarding, when moving code from my own testing environment into our shared repository, I ran into a few merge conflicts which couyld not be fast-forwarded or rebased without manually resolving, this tested my skills and was the first chance I got properly using a VCS during this programme, which I was very proud of. I f I was to do this again, I would make use of feature branches and use a VCS from the beginning to avoid issues with clashing variable names, when incorporating my code in with the rest of the team. Additionally, I was proud with how I managed to overcome an issue in the trimatrix.java file where the traingle was not visible in front of the matrix, it was during this that I discovered the `translate()` function in processing and how it could help me place object effectively on the z-axis to overcome this issue.</p>
 <br>
 <b>Alannah</b>
 <p>The aspect I'm most proud of in my part of the assignment was my ability to adapt. I faced several instances where my code threw errors, and I wasn't sure why. These challenges were frustrating, but they became learning opportunities for me. Instead of giving up, I adapted. I researched, i watched videos and i ran my code again and again to try and improve it. One specific example comes to mind, before my finished product, in my case 4, i.e the cube case, i used to also have a wall class. the wall class was a long piece of code that i worked really hard on to get working, it reacted with the music and looked great along my cube class. But unfortunately, when putting it in the cases, the wall code stopped working, i tried for hours to try and fix it to no avail. i was frustrated and disappointed, 'why cant i get it' i thought. so i had to go back to the drawing board. i adapted and made the decision t remove the wall code and instead add two lines diagonally across the screen(as seen in the final program). Even though it was frustrating to remove the wall code, it was my ability to adapt and emply a new creative solution that i am really proud of, and will take forward with me. </p>
 
-# Markdown Tutorial
 
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
+Youtube video:
 
 [![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
 
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
 
