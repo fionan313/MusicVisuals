@@ -54,7 +54,7 @@ This visual conists of:
 <b>Éadaoin</b>
 <p>I am most proud of being able to join both of my initial visuals into a 3rd visual with a mixture of my code, creating an even cooler visual. When I initially tried this it looked okay but not great, and with more editing and trial and erroring I was able to get my circle vertex to a place that I was really happy with and have it looking good. I think this visual was easier than my other 2 visuals, but only because I had already done the hard work and dealt with the difficulties involved with creating them. I had already learned a lot from my first 2 visuals as well so it was quicker when I was editing as I knew each of the variables and what they would change.</p>
 <br>
-<b>´Fionán</b>
+<b>Fionán</b>
 <p>I'm most pround of being able to significantly improve my skills with using Version Control System (VCS) throughout this assignemnet, along with improving my Java skills and getting a better understanding of creating sketches with Processing, putting my skills in Git to use was very rewarding, when moving code from my own testing environment into our shared repository, I ran into a few merge conflicts which couyld not be fast-forwarded or rebased without manually resolving, this tested my skills and was the first chance I got properly using a VCS during this programme, which I was very proud of. I f I was to do this again, I would make use of feature branches and use a VCS from the beginning to avoid issues with clashing variable names, when incorporating my code in with the rest of the team. Additionally, I was proud with how I managed to overcome an issue in the trimatrix.java file where the traingle was not visible in front of the matrix, it was during this that I discovered the `translate()` function in processing and how it could help me place object effectively on the z-axis to overcome this issue.</p>
 <br>
 <b>Alannah</b>
@@ -63,6 +63,6 @@ This visual conists of:
 
 Youtube video:
 
-[![YouTube](https://youtu.be/O8TJEiXIKQE)
+[![YouTube](https://youtu.be/O8TJEiXIKQE)]
 
 
