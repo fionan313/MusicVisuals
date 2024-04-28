@@ -1,7 +1,7 @@
 # Music Visualiser Project
 
-Name 1:Eadaoin o Snodaigh
-<br>Name 2:Fionan O Ceallaigh 
+Name 1:Éadaoin Ó Snodaigh
+<br>Name 2:Fionán Ó Ceallaigh 
 <br>Name 3:Alannah Walsh
 
 Student Number 1: C22398106
@@ -17,16 +17,16 @@ Student Number 1: C22398106
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
-For this assignment, we were tasked as a group to make a music visualizer using Processing in Java. Each of us was assigned a specific case to add our visuals to the program. Each member took on the task and made creative additions to the program. Using github we  there are 7 cases in total, 2 made by alannah, 2 made by fionan and 3 made by eadaoin. across each of our cases we explored a various amount of functions. Fionan explored 3D models and matrixes, Alannah employed mouse input for one of her cases, and Eadaoin explored her creativity by combining two of her cases to making a unique 3rd case.
+For this assignment, we were tasked as a group to make a music visualizer using Processing in Java. Each of us was assigned a specific case to add our visuals to the program. Each member took on the task and made creative additions to the program. Using github we  there are 7 cases in total, 2 made by Alannah, 2 made by Fionán and 3 made by Éadaoin. across each of our cases we explored a various amount of functions. Fionán explored 3D models and matrixes, Alannah employed mouse input for one of her cases, and Éadaoin explored her creativity by combining two of her cases to making a unique 3rd case.
 # Instructions
 
 # How it works
 
 # What I am most proud of in the assignment
-<b>Eadaoin</b>
-<p>i am most proud of ...</p>
+<b>Éadaoin</b>
+<p>I am most proud being able to join both of my initial visuals into a 3rd visual with a mixture of my code, creating an even cooler visual. When I initially tried this it looked okay but not great, and with more editing and trial and erroring I was able to get my circle vertex to a place that I was really happy with and have it looking good. I think this visual was easier than my other 2 visuals, but only because I had already done the hard work and dealt with the difficulties involved with creating them. I had already learned a lot from my first 2 visuals as well so it was quicker when I was editing as I knew each of the variables and what they would change.</p>
 <br>
-<b>Fionan</b>
+<b>´Fionan</b>
 <p>i am most proud of ...</p>
 <br>
 <b>Alannah</b>
