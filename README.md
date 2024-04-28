@@ -73,6 +73,6 @@ This visual conists of:
 
 Youtube video:
 
-[![YouTube](https://youtu.be/O8TJEiXIKQE)]
+[Watch the video on YouTube](https://youtu.be/O8TJEiXIKQE) 
 
 
