@@ -48,7 +48,17 @@ This visual conists of:
 </p>
 <br>
 <b>Alannah</b>
-<p></p>
+<p>i did not use seprate java files i just used cases so i will discuss them now.</p>
+<br><b>Case 3</b>
+<p> Here I had eyeballs that follow the mouses movements. I also had a circle inn the middle on the screen that would react to the music.</p>
+<p>The eyeball effect was created by using 2 ellipses , one bigger solid filled and then one smaller no filled one (since the background was black i could use the nofill() and create the effect of pupils). The eye positions are pre-defined as an array of PVector objects, representing the coordinates where the eyes will be drawn on the screen.To create the pupil movement effect, the code calculates a vector (pupilDifference) based on the difference between the eye's position and the current mouse position. This difference vector is scaled to ensure the pupils stay within the eye's boundary.</p>
+<p>The  background effecct was created using the sin function to generate a wave-like motion based on the current frame count and the smoothed audio amplitude (smoothedAmplitude), which is updated as audio is processed.The wave's height is modulated by the smoothed amplitude, providing a reactive component. As the music's volume increases, the wave becomes more pronounced. The effect is drawn by creating a circular shape (beginShape()...endShape()) and using a loop to define vertices based on the sin function's output. This creates a dynamic circular ripple effect.</p>
+<br><b>Case 4</b>
+<p>Here i had 3D cubes moving foward and 2 digonal lines reacting to the music</p>
+<p>The code uses an FFT (Fast Fourier Transform) to analyze the audio data. FFT converts audio signals from the time domain to the frequency domain, allowing you to break down the audio into different frequency bands. As part of the visual effect i made a cube class...
+<p>Cube class: This is a custom class representing a 3D cube. It has properties for position (x, y, z), rotation (rotX, rotY, rotZ), and size, with additional fields to manage speed and cumulative rotation.In the Cube constructor, the cubes are initialized with random positions and rotations to create a varied 3D scene. The display method in the Cube class is responsible for rendering the cubes. The cubes are translated in 3D space, rotated, and then drawn using the box function from Processing.</p>
+<p>Line Segments: The code defines two sets of diagonal lines that cross the screen: one from top-left to bottom-right and one from top-right to bottom-left. These lines are made up of a series of points, whose positions are influenced by the FFT data. The updateLineOffsets method updates the displacement values for these lines based on the FFT data. The displacement determines how much each segment is offset from a straight line, creating a wave-like motion. The drawLine method is used to draw the lines, using the offsets to adjust the y-coordinates of the line segments. This creates a visual effect where the lines appear to react to the audio data.
+
 
 # What I am most proud of in the assignment
 <b>Éadaoin</b>
