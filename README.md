@@ -18,15 +18,29 @@ Student Number 1: C22398106
 
 # Description of the assignment
 For this assignment, we were tasked as a group to make a music visualizer using Processing in Java. Each of us was assigned a specific case to add our visuals to the program. Each member took on the task and made creative additions to the program. Using github we  there are 7 cases in total, 2 made by Alannah, 2 made by Fionán and 3 made by Éadaoin. across each of our cases we explored a various amount of functions. Fionán explored 3D models and matrixes, Alannah employed mouse input for one of her cases, and Éadaoin explored her creativity by combining two of her cases to making a unique 3rd case.
+
 # Instructions
+We used a keypressed and switch case to access the individual visuals. We were able to swap between visuals by pressing between 0-7. As well as this we included keys to change song, this was 'g' for We Like To Party and 'h' for Glue. We also used 'w','a','s' and 'd' t change the camera angles to view different dimensions of our visuals.
 
 # How it works
+<b>Éadaoin</b>
+<p><b>vertex.java - </b>This visual is 8 octagons that circle around each other. Thee octagons join together so it looks like 1 shape, this is because I used vertex which joins each point. The shape rotates based on frame count. I used maths functions like TWO_PI and sin and cos. The octagons get bigger and smaller depending on the beat. Also the background changes colour based on the framecount, meaning each time the background changes it looks like one octagon goes missing!</p>
+<br>
+<p><b>circles.java - </b>This visual shows loads of circles overlapping each other to creat a cool triskele style art, it goes from left to right in rainbow colours. There are 2 nested loops. The outer loop iterates over the width of the screen, and the inner loop iterates over the height, both adding 25 pixels each iteration(to create evenly spaced circles). It draws a circle at the current position of i and j (both used in the for loops). The size of the circles change based on the beat which makes the really cool visual.</p>
+<br>
+<p><b>circlevertex.java - </b>Like Hannah Montana's Song, The Best of Both Worlds, this code combines both my visuals to create an epic visual. The octagons are now created with a line of circles instead of just a line. The visual rotates and changes background colour with frame count. The code includes a for loop to create the octagons made of circles using the same maths functions as vertex.java. Each octagon(set of circles) has a different colour.The size of the circles, like the octagons, change based on the beat in the song, meaning there is a lot of movement in this visual.</p>
+<br>
+<b>Fionán</b>
+<p></p>
+<br>
+<b>Alannah</b>
+<p></p>
 
 # What I am most proud of in the assignment
 <b>Éadaoin</b>
-<p>I am most proud being able to join both of my initial visuals into a 3rd visual with a mixture of my code, creating an even cooler visual. When I initially tried this it looked okay but not great, and with more editing and trial and erroring I was able to get my circle vertex to a place that I was really happy with and have it looking good. I think this visual was easier than my other 2 visuals, but only because I had already done the hard work and dealt with the difficulties involved with creating them. I had already learned a lot from my first 2 visuals as well so it was quicker when I was editing as I knew each of the variables and what they would change.</p>
+<p>I am most proud of being able to join both of my initial visuals into a 3rd visual with a mixture of my code, creating an even cooler visual. When I initially tried this it looked okay but not great, and with more editing and trial and erroring I was able to get my circle vertex to a place that I was really happy with and have it looking good. I think this visual was easier than my other 2 visuals, but only because I had already done the hard work and dealt with the difficulties involved with creating them. I had already learned a lot from my first 2 visuals as well so it was quicker when I was editing as I knew each of the variables and what they would change.</p>
 <br>
-<b>´Fionan</b>
+<b>´Fionán</b>
 <p>i am most proud of ...</p>
 <br>
 <b>Alannah</b>
